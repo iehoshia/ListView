@@ -1,26 +1,32 @@
 package com.guatemala.api.twitterdemo;
 
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import java.util.List;
+public class MainActivity extends ListActivity{
 
-
-public class MainActivity extends Activity {
-
-    private ListView listView;
+    //private ListView listView;
+    private TweetAdapter tweetItemArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TweetAdapter tweetItemArrayAdapter = new TweetAdapter(this, new String[10]);
-        listView = (ListView)findViewById(R.id.listView);
-        listView.setAdapter(tweetItemArrayAdapter);
+        tweetItemArrayAdapter = new TweetAdapter(this, new String[10]);
+        // listView = (ListView)findViewById(R.id.list);
+        // listView.setAdapter(tweetItemArrayAdapter);
+        setListAdapter(tweetItemArrayAdapter);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id){
+        TextView t = (TextView) v.findViewById(R.id.titulo);
+        t.setText("Tweet Clicked");
     }
 
 
