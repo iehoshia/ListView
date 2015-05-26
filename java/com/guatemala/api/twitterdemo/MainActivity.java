@@ -1,6 +1,7 @@
 package com.guatemala.api.twitterdemo;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,8 +26,10 @@ public class MainActivity extends ListActivity{
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id){
-        TextView t = (TextView) v.findViewById(R.id.titulo);
-        t.setText("Tweet Clicked");
+        //TextView t = (TextView) v.findViewById(R.id.titulo);
+        //t.setText("Usted hizo clic aquí");
+        Intent intent = new Intent(this, TweetDetail.class);
+        startActivity(intent);
     }
 
 
