@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends ListActivity{
 
     //private ListView listView;
@@ -18,7 +20,15 @@ public class MainActivity extends ListActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tweetItemArrayAdapter = new TweetAdapter(this, new String[10]);
+
+        String[] valores = new String[10];
+
+        for (int i=0; i<10; i++){
+            valores[i] = "Titulo: " + String.valueOf(i);
+        }
+        ArrayList<Tweet> lista = new ArrayList<Tweet>();
+        Tweet tweet = new Tweet("Primero","Segundo");
+        tweetItemArrayAdapter = new TweetAdapter(this, lista);
         // listView = (ListView)findViewById(R.id.list);
         // listView.setAdapter(tweetItemArrayAdapter);
         setListAdapter(tweetItemArrayAdapter);
